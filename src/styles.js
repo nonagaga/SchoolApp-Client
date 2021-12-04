@@ -25,6 +25,8 @@ const styles = StyleSheet.create({
     },
     headerTitleStyle:{
       color: "#DDD",
+      fontSize: 30,
+      fontWeight: 'bold',
     },
     rick:{
       alignItems: 'center',
@@ -46,7 +48,10 @@ const styles = StyleSheet.create({
       color: '#004d8c',
       fontSize: 17,
       fontWeight: 'bold',
-    }
+    },
+    calendarDay:{
+      backgroundColor: '#636363'
+    },
 });
 
 export default styles 

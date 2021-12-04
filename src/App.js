@@ -20,7 +20,6 @@ export default function App() {
     <Tab.Navigator initialRouteName="Home" screenOptions = {({route}) => ({
       tabBarIcon: ({focused, color, size}) => {
         let iconName;
-
         if(route.name === 'Home'){
           iconName = focused ? "md-home" : "md-home-outline"
         } else if (route.name === 'Lunch'){
@@ -70,14 +69,14 @@ function LunchMenu() {
 function CalendarMenu() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Calendar</Text>
       <Agenda theme={theme} items={{
         '2021-12-03': [],
-        '2021-12-04': [{name: 'dentist', height: 80}],
+        '2021-12-04': [{name: 'dentist'}],
         '2021-12-05': [],
         '2021-12-06': [{name: 'item 3 - any js object'}, {name: 'any js object'}]
       }}
       renderItem={(item, firstItemInDay) => {return (<View style = {styles.calendarEvent}><Text style={styles.calendarEventText}>{item.name}</Text></View>);}}
+      renderDay={(day, item) => {return (<View style = {styles.calendarDay}></View>);}}
       loadItemsForMonth = {(month) => {
         console.log("loading data for new month: " + month.month)
       }}
