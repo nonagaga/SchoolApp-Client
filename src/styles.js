@@ -33,6 +33,19 @@ const styles = StyleSheet.create({
       width: 300,
       height: 300,
       resizeMode: 'contain'
+    },
+    calendarEvent:{
+      flex: 1,
+      backgroundColor: '#3d7bad',
+      borderLeftColor: '#52b1ff',
+      borderLeftWidth: 2,
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    calendarEventText:{
+      color: '#004d8c',
+      fontSize: 17,
+      fontWeight: 'bold',
     }
 });
 

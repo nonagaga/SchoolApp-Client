@@ -72,11 +72,16 @@ function CalendarMenu() {
     <View style={styles.container}>
       <Text style={styles.title}>Calendar</Text>
       <Agenda theme={theme} items={{
-        '2021-12-3': [{name: 'item 1 - any js object'}],
-        '2021-12-4': [{name: 'item 2 - any js object', height: 80}],
-        '2021-12-5': [],
-        '2021-12-6': [{name: 'item 3 - any js object'}, {name: 'any js object'}]
-      }}></Agenda>
+        '2021-12-03': [],
+        '2021-12-04': [{name: 'dentist', height: 80}],
+        '2021-12-05': [],
+        '2021-12-06': [{name: 'item 3 - any js object'}, {name: 'any js object'}]
+      }}
+      renderItem={(item, firstItemInDay) => {return (<View style = {styles.calendarEvent}><Text style={styles.calendarEventText}>{item.name}</Text></View>);}}
+      loadItemsForMonth = {(month) => {
+        console.log("loading data for new month: " + month.month)
+      }}
+      ></Agenda>
     </View>
   )
   }

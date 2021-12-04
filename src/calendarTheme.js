@@ -8,7 +8,7 @@ const theme = {
     selectedDayBackgroundColor: '#00adf5',
     selectedDayTextColor: '#ffffff',
     todayTextColor: '#00adf5',
-    dayTextColor: '#2d4150',
+    dayTextColor: '#ffffff',
     textDisabledColor: '#d9e1e8',
     dotColor: '#00adf5',
     selectedDotColor: '#ffffff',
