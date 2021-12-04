@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
       resizeMode: 'contain'
     },
     calendarEvent:{
+      padding: 10,
       flex: 1,
       backgroundColor: '#3d7bad',
       borderLeftColor: '#52b1ff',
@@ -50,7 +51,8 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
     calendarDay:{
-      backgroundColor: '#636363'
+      flex: 1,
+      alignItems: 'center',
     },
 });
 
