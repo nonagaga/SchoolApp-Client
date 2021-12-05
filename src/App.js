@@ -9,7 +9,7 @@ import {CalendarList} from 'react-native-calendars';
 
 import styles from './styles';
 import { ScrollView } from 'react-native-gesture-handler';
-import theme from './calendarTheme';
+import themes from './themes'
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
@@ -17,7 +17,7 @@ const Stack = createNativeStackNavigator()
 export default function App() {
   console.log("App started!")
   return (
-  <NavigationContainer>
+  <NavigationContainer theme = {themes.navigationContainerTheme}>
     <Tab.Navigator initialRouteName="Home" screenOptions = {({route}) => ({
       tabBarIcon: ({focused, color, size}) => {
         let iconName;
@@ -53,7 +53,7 @@ function HomeScreen({navigation}) {
   <View style={styles.container}>
     <Text style = {styles.title} >Welcome to the School Stuff Application!</Text>
     <Button style = {styles.buttons} title="School"></Button>
-    <Button onPress = {() => navigation.navigate('Lunch Menu')} style={styles.buttons} title="Lunch Menu" backgroundColor='#000'></Button>
+    <Button onPress = {() => navigation.navigate('Lunch')} style={styles.buttons} title="Lunch Menu" backgroundColor='#000'></Button>
     <StatusBar style="auto" />
   </View>)
 }
@@ -79,7 +79,7 @@ function CalendarMenu() {
 }
 function CalendarComponent({navigation}) {
   return ( <View style={styles.container}>
-    <CalendarList theme={theme} markingType={'multi-dot'} markedDates={{
+    <CalendarList theme={themes.calendarTheme} markingType={'multi-dot'} markedDates={{
       '2021-12-04': { selected: true, marked: true, selectedColor: '#3d97e0' },
       '2021-12-05': { marked: true },
       '2021-12-06': { marked: true, dotColor: 'red', activeOpacity: 0 },
@@ -92,7 +92,7 @@ function CalendarComponent({navigation}) {
 
 function DayComponent({navigation}) {
   return (
-  <ScrollView style={styles.container}>
+  <ScrollView contentContainerStyle = {styles.dateContainer}>
     <Button style = {styles.buttons} title = "Back" onPress = {() => {navigation.navigate("CalendarComponent")}}></Button>
     <Text>Date{/*apiData.date*/}</Text>
   </ScrollView>

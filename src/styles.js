@@ -53,6 +53,11 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
     },
+    dateContainer: {
+      flex: 1,
+      backgroundColor: '#1a1a1a',
+      padding: 10,
+    },
 });
 
 export default styles 

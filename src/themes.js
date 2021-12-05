@@ -1,6 +1,8 @@
 import styles from "./styles";
+import { DefaultTheme } from '@react-navigation/native';
 
-const theme = {
+const themes = {
+  calendarTheme: {
     backgroundColor: styles.container.backgroundColor,
     calendarBackground: styles.container.backgroundColor,
     textSectionTitleColor: '#b6c1cd',
@@ -25,7 +27,15 @@ const theme = {
     textDayFontSize: 16,
     textMonthFontSize: 16,
     textDayHeaderFontSize: 16
-  }
+},
+navigationContainerTheme: {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#3d97e0',
+  },
+  backgroundColor: styles.container.backgroundColor
+}
+}
 
-  export default theme
-  
+  export default themes
