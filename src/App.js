@@ -10,21 +10,32 @@ import {CalendarList} from 'react-native-calendars';
 import styles from './styles';
 import { ScrollView } from 'react-native-gesture-handler';
 import themes from './themes'
+import DayComponent from './DayComponent'
+import { ClassMenu } from './ClassMenu';
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator()
+
+const academy = {key: 'academy', color: 'yellow', selectedDotColor: 'yellow'};
+const club = {key: 'club', color: 'blue', selectedDotColor: 'blue'};
+const general = {key: 'general', color: 'orange', selectedDotColor: 'orange'};
+const local = {key: 'local', color: 'pink', selectedDotColor: 'pink'};
+const school = {key: 'school', color: 'red', selectedDotColor: 'red'};
+const sports = {key: 'sports', color: 'green', selectedDotColor: 'green'};
+const student = {key: 'student', color: 'white', selectedDotColor: 'white'};
+
+global.globalDate = Date()
 
 export default function App() {
   console.log("App started!")
   return (
-  <NavigationContainer theme = {themes.navigationContainerTheme}>
+  <NavigationContainer style = {styles.container} theme = {themes.navigationContainerTheme}>
     <Tab.Navigator initialRouteName="Home" screenOptions = {({route}) => ({
       tabBarIcon: ({focused, color, size}) => {
         let iconName;
         if(route.name === 'Home'){
           iconName = focused ? "md-home" : "md-home-outline"
-        } else if (route.name === 'Lunch'){
-          iconName = focused ? "fast-food" : "fast-food-outline"
+        } else if (route.name === 'Classes'){
+          iconName = focused ? "documents" : "documents-outline"
         } else if (route.name === 'Calendar'){
           iconName = focused ? 'ios-calendar' : 'ios-calendar-outline'
         }
@@ -36,7 +47,7 @@ export default function App() {
         options={{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle
       }}></Tab.Screen>
 
-      <Tab.Screen name="Lunch" component={LunchMenu}
+      <Tab.Screen name="Classes" component={ClassMenu}
         options={{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle
       }}></Tab.Screen>
 
@@ -52,15 +63,13 @@ function HomeScreen({navigation}) {
   return (
   <View style={styles.container}>
     <Text style = {styles.title} >Welcome to the School Stuff Application!</Text>
-    <Button style = {styles.buttons} title="School"></Button>
-    <Button onPress = {() => navigation.navigate('Lunch')} style={styles.buttons} title="Lunch Menu" backgroundColor='#000'></Button>
     <StatusBar style="auto" />
   </View>)
 }
 
 function LunchMenu() {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Lunch Options:</Text>
       <Image style = {styles.rick} source = {require('./img/ramen.png')}/>
     </ScrollView>
@@ -68,6 +77,7 @@ function LunchMenu() {
 }
 
 function CalendarMenu() {
+  const Stack = createNativeStackNavigator()
   return (
     <NavigationContainer independent = {true}>
       <Stack.Navigator screenOptions ={{headerShown: false}}>
@@ -77,24 +87,21 @@ function CalendarMenu() {
     </NavigationContainer>
   )
 }
+
+
 function CalendarComponent({navigation}) {
   return ( <View style={styles.container}>
     <CalendarList theme={themes.calendarTheme} markingType={'multi-dot'} markedDates={{
-      '2021-12-04': { selected: true, marked: true, selectedColor: '#3d97e0' },
-      '2021-12-05': { marked: true },
-      '2021-12-06': { marked: true, dotColor: 'red', activeOpacity: 0 },
-      '2021-12-07': { disabled: true, disableTouchEvent: true }
-    }}
-      onDayPress={(day) => {navigation.navigate("DayComponent")} }></CalendarList>
+    '2021-12-05': {dots: [academy, school, sports]},
+    '2021-12-06': {dots: [sports]}
+  }}
+      onDayPress={(day) => {
+        console.log(day.dateString)
+        var date = new Date()
+        date.setFullYear(day.dateString.substring(0,4), day.dateString.substring(5, 7), day.dateString.substring(8,10))
+        globalDate = date
+        navigation.navigate("DayComponent")
+        } }></CalendarList>
   </View>
   )
 }
-
-function DayComponent({navigation}) {
-  return (
-  <ScrollView contentContainerStyle = {styles.dateContainer}>
-    <Button style = {styles.buttons} title = "Back" onPress = {() => {navigation.navigate("CalendarComponent")}}></Button>
-    <Text>Date{/*apiData.date*/}</Text>
-  </ScrollView>
-)}
-
