@@ -5,13 +5,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import { Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import {CalendarList} from 'react-native-calendars';
 
 import styles from './styles';
 import { ScrollView } from 'react-native-gesture-handler';
 import theme from './calendarTheme';
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator()
 
 export default function App() {
   console.log("App started!")
@@ -68,17 +69,32 @@ function LunchMenu() {
 
 function CalendarMenu() {
   return (
-    <View style={styles.container}>
-      <Agenda theme={theme} items={{
-        '2021-12-04': [{name: 'dentist'}],
-        '2021-12-17': [{name: 'not dentist'}]
-      }}
-      renderItem={(item, firstItemInDay) => {return (<View style = {styles.calendarEvent}><Text style={styles.calendarEventText}>{item.name}</Text></View>);}}
-      renderDay={(day, item) => {return (<View style = {styles.calendarDay}></View>);}}
-      loadItemsForMonth = {(month) => {
-        console.log("loading data for new month: " + month.month)
-      }}
-      ></Agenda>
-    </View>
+    <NavigationContainer independent = {true}>
+      <Stack.Navigator screenOptions ={{headerShown: false}}>
+        <Stack.Screen name = "CalendarComponent" component = {CalendarComponent}></Stack.Screen>
+        <Stack.Screen name = "DayComponent" component = {DayComponent}></Stack.Screen>
+    </Stack.Navigator>
+    </NavigationContainer>
   )
 }
+function CalendarComponent({navigation}) {
+  return ( <View style={styles.container}>
+    <CalendarList theme={theme} markingType={'multi-dot'} markedDates={{
+      '2021-12-04': { selected: true, marked: true, selectedColor: '#3d97e0' },
+      '2021-12-05': { marked: true },
+      '2021-12-06': { marked: true, dotColor: 'red', activeOpacity: 0 },
+      '2021-12-07': { disabled: true, disableTouchEvent: true }
+    }}
+      onDayPress={(day) => {navigation.navigate("DayComponent")} }></CalendarList>
+  </View>
+  )
+}
+
+function DayComponent({navigation}) {
+  return (
+  <ScrollView style={styles.container}>
+    <Button style = {styles.buttons} title = "Back" onPress = {() => {navigation.navigate("CalendarComponent")}}></Button>
+    <Text>Date{/*apiData.date*/}</Text>
+  </ScrollView>
+)}
+
