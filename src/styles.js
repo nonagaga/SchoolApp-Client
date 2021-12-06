@@ -6,13 +6,23 @@ const styles = StyleSheet.create({
       backgroundColor: '#1a1a1a',
       padding: 10,
       // alignItems: 'center',
-      // justifyContent: 'center',
+      //justifyContent: 'space-between',
+    },
+    horizontalContainer: {
+      flex: 1,
+      flexDirection: 'row',
+      backgroundColor: '#1a1a1a',
+      padding: 10,
     },
     title: {
       color: '#DDD',
       fontSize: 30,
       fontWeight: 'bold',
       textAlign: 'center',
+    },
+    body: {
+      color: '#DDD',
+      fontSize: 20
     },
     buttons:{
       fontSize: 20,
@@ -25,6 +35,11 @@ const styles = StyleSheet.create({
     headerTitleStyle:{
       color: "#DDD",
       fontSize: 30,
+      fontWeight: 'bold',
+    },
+    scheduleHeaderTitleStyle: {
+      color: "#DDD",
+      fontSize: 22,
       fontWeight: 'bold',
     },
     rick:{
@@ -55,6 +70,7 @@ const styles = StyleSheet.create({
     },
     dateContainer: {
       flex: 1,
+      alignItems: 'flex-start',
       backgroundColor: '#1a1a1a',
       padding: 10,
     },
