@@ -2,26 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import {CalendarList} from 'react-native-calendars';
 
 import styles from './styles';
 import themes from './themes'
-import DayComponent from './DayComponent'
 import { ClassMenu } from './ClassMenu';
 import { LunchMenu } from './LunchMenu';
+import { CalendarMenu } from './CalendarMenu';
 
 const Tab = createBottomTabNavigator();
-
-const academy = {key: 'academy', color: 'yellow', selectedDotColor: 'yellow'};
-const club = {key: 'club', color: 'blue', selectedDotColor: 'blue'};
-const general = {key: 'general', color: 'orange', selectedDotColor: 'orange'};
-const local = {key: 'local', color: 'pink', selectedDotColor: 'pink'};
-const school = {key: 'school', color: 'red', selectedDotColor: 'red'};
-const sports = {key: 'sports', color: 'green', selectedDotColor: 'green'};
-const student = {key: 'student', color: 'white', selectedDotColor: 'white'};
 
 global.globalDate = Date()
 
