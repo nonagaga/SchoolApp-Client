@@ -5,8 +5,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import styles from './styles';
 
 export function ClassMenu() {
-  const [disabled, setDisabled] = useState(true)
-  const [buttonText, setButtonText] = useState('Edit')
+  const Stack = createNativeStackNavigator()
+  return(
+    <NavigationContainer independent={true}>
+      <Stack.Navigator>
+        <Stack.Screen name = "Schedule" component = {Schedule} options={{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle}}></Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
+
+function Schedule() {
+    const [disabled, setDisabled] = useState(true)
+    const [buttonText, setButtonText] = useState('Edit')
+
 
   return (
     <View style = {styles.container}>
@@ -25,8 +37,6 @@ export function ClassMenu() {
         } else {
           setButtonText('Edit')}
         }}
-        
-        
         ></Button>
     </View>
   )

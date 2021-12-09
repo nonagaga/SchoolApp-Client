@@ -57,33 +57,3 @@ function HomeScreen() {
     <StatusBar style="auto" />
   </View>)
 }
-
-function CalendarMenu() {
-  const Stack = createNativeStackNavigator()
-  return (
-    <NavigationContainer independent = {true}>
-      <Stack.Navigator screenOptions ={{headerShown: false}}>
-        <Stack.Screen name = "CalendarComponent" component = {CalendarComponent}></Stack.Screen>
-        <Stack.Screen name = "DayComponent" component = {DayComponent}></Stack.Screen>
-    </Stack.Navigator>
-    </NavigationContainer>
-  )
-}
-
-
-function CalendarComponent({navigation}) {
-  return ( <View style={styles.container}>
-    <CalendarList theme={themes.calendarTheme} markingType={'multi-dot'} markedDates={{
-    '2021-12-05': {dots: [academy, school, sports]},
-    '2021-12-06': {dots: [sports]}
-  }}
-      onDayPress={(day) => {
-        console.log(day.dateString)
-        var date = new Date()
-        date.setFullYear(day.dateString.substring(0,4), day.dateString.substring(5, 7), day.dateString.substring(8,10))
-        globalDate = date
-        navigation.navigate("DayComponent")
-        } }></CalendarList>
-  </View>
-  )
-}
