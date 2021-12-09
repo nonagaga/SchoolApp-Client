@@ -4,9 +4,9 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#1a1a1a',
-      padding: 10,
+      padding: 20,
       // alignItems: 'center',
-      //justifyContent: 'space-between',
+      // justifyContent: 'space-between',
     },
     horizontalContainer: {
       flex: 1,
@@ -42,13 +42,21 @@ const styles = StyleSheet.create({
       fontSize: 22,
       fontWeight: 'bold',
     },
-    rick:{
+    rickContainer: {
       alignItems: 'center',
-      justifyContent: 'center',
-      flex: 1,
-      width: 300,
-      height: 300,
-      resizeMode: 'contain'
+    },
+    rick:{
+      width: 200,
+      height: 200,
+      marginBottom: 10,
+    },
+    lunchMenuTitle: {
+      color: '#DDD',
+      fontSize: 30,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginTop: 20,
+      marginBottom: 20,
     },
     calendarEvent:{
       padding: 10,

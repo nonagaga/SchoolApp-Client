@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, Text, View, Image} from 'react-native';
+import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,10 +8,10 @@ import { Ionicons } from '@expo/vector-icons';
 import {CalendarList} from 'react-native-calendars';
 
 import styles from './styles';
-import { ScrollView } from 'react-native-gesture-handler';
 import themes from './themes'
 import DayComponent from './DayComponent'
 import { ClassMenu } from './ClassMenu';
+import { LunchMenu } from './LunchMenu';
 
 const Tab = createBottomTabNavigator();
 
@@ -59,21 +59,13 @@ export default function App() {
   </NavigationContainer>);
 }
 
-function HomeScreen({navigation}) {
+function HomeScreen() {
   return (
   <View style={styles.container}>
     <Text style = {styles.title} >Welcome to the School Stuff Application!</Text>
+    <LunchMenu/>
     <StatusBar style="auto" />
   </View>)
-}
-
-function LunchMenu() {
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Lunch Options:</Text>
-      <Image style = {styles.rick} source = {require('./img/ramen.png')}/>
-    </ScrollView>
-  )
 }
 
 function CalendarMenu() {
