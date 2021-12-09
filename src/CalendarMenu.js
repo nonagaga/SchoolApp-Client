@@ -68,11 +68,14 @@ function CalendarComponent(props, { navigation }) {
     <CalendarList displayLoadingIndicator theme={themes.calendarTheme} markingType={'multi-dot'} markedDates={calendarData}
       onDayPress={(day) => {
         console.log(day.dateString);
-        var date = new Date();
-        date.setFullYear(day.dateString.substring(0, 4), day.dateString.substring(5, 7), day.dateString.substring(8, 10));
-        globalDate = date;
-        navigation.navigate("DayComponent");
-      }}></CalendarList>
+        // var date = new Date();
+        // date.setFullYear(day.dateString.substring(0, 4), day.dateString.substring(5, 7), day.dateString.substring(8, 10));
+        // globalDate = date;
+        // navigation.navigate("DayComponent");
+      }}
+      >
+
+      </CalendarList>
   </View>
   );
 }

@@ -1,23 +1,24 @@
-import React, {useState, useEffect} from 'react';
-import { Button, Text, View, Image, TextInput} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React, {useState} from 'react';
+import { Button, Text, TextInput} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import styles from './styles';
 
+// export function ClassMenu() {
+//   const Stack = createNativeStackNavigator()
+//   return(
+//     <NavigationContainer independent={true}>
+//       <Stack.Navigator>
+//         <Stack.Screen name="Schedule" component={Schedule} options={{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle}}></Stack.Screen>
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   )
+// }
+
 export function ClassMenu() {
-  const Stack = createNativeStackNavigator()
-  return(
-    <NavigationContainer independent={true}>
-      <Stack.Navigator>
-        <Stack.Screen name = "Schedule" component = {Schedule} options={{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle}}></Stack.Screen>
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
-}
-
-function Schedule() {
-    const [disabled, setDisabled] = useState(true)
-    const [buttonText, setButtonText] = useState('Edit')
-
+  const [disabled, setDisabled] = useState(true)
+  const [buttonText, setButtonText] = useState('Edit')
 
   return (
     <ScrollView style = {styles.scheduleContainer} contentContainerStyle = {{alignItems: "center"}}>
@@ -32,11 +33,11 @@ function Schedule() {
       <TextInput style = {styles.body} editable = {!disabled} placeholder = "Period 8" placeholderTextColor = "#777" keyboardAppearance='dark'></TextInput>
       <Button title = {buttonText} onPress = {() => {
         setDisabled(!disabled)
-        if (buttonText == 'Edit'){
+        if (buttonText == 'Edit') {
           setButtonText('Done')
         } else {
-          setButtonText('Edit')}
-        }}
+          setButtonText('Edit')
+        }}}
         ></Button>
     </ScrollView>
   )

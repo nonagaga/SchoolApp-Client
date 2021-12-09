@@ -4,9 +4,10 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#1a1a1a',
-      padding: 20,
+      padding: 10,
       // alignItems: 'center',
       // justifyContent: 'space-between',
+      // paddingBottom: 300
     },
     horizontalContainer: {
       flex: 1,
@@ -19,6 +20,8 @@ const styles = StyleSheet.create({
       fontSize: 30,
       fontWeight: 'bold',
       textAlign: 'center',
+      marginTop: 30,
+      marginBottom: 30
     },
     body: {
       fontSize: 30,
@@ -101,6 +104,9 @@ const styles = StyleSheet.create({
       marginTop: 0,
       marginBottom: 20,
     },
+    lunchCont: {
+      marginBottom: 30
+    }
 });
 
 export default styles 
