@@ -4,8 +4,20 @@ import { ScrollView } from 'react-native-gesture-handler';
 import styles from './styles';
 
 export function ClassMenu() {
-  const [disabled, setDisabled] = useState(true)
-  const [buttonText, setButtonText] = useState('Edit')
+  const Stack = createNativeStackNavigator()
+  return(
+    <NavigationContainer independent={true}>
+      <Stack.Navigator>
+        <Stack.Screen name = "Schedule" component = {Schedule} options={{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle}}></Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
+
+function Schedule() {
+    const [disabled, setDisabled] = useState(true)
+    const [buttonText, setButtonText] = useState('Edit')
+
 
   return (
     <ScrollView style = {styles.scheduleContainer} contentContainerStyle = {{alignItems: "center"}}>

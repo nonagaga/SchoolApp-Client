@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Text, View } from 'react-native';
+import * as React from 'react';
+import { Button, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -34,7 +35,7 @@ export default function App() {
       }
     })}>
 
-      <Tab.Screen name="Home" component={HomeScreen}
+      <Tab.Screen name="Home" component={HomeNavigator}
         options={{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle
       }}></Tab.Screen>
 
@@ -50,11 +51,21 @@ export default function App() {
   </NavigationContainer>);
 }
 
-function HomeScreen() {
+function HomeNavigator() {
+  const Stack = createNativeStackNavigator()
+  return(
+    <NavigationContainer independent={true} style = {styles.container}>
+      <Stack.Navigator screenOptions = {{headerShown: false}} style = {styles.container}>
+        <Stack.Screen name="HomeScreen" component= {HomeScreen} options = {{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle}}></Stack.Screen>
+        <Stack.Screen name="LunchMenu" component={LunchMenu} options = {{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle}}></Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
+
+function HomeScreen({navigation}) {
   return (
-  <ScrollView style={styles.container}>
-    <Text style = {styles.title} >Welcome to the School Stuff Application!</Text>
-    <LunchMenu/>
-    <StatusBar style="auto" />
-  </ScrollView>)
+    <ScrollView style={styles.container}>
+      <Button title = 'Lunch Menu' onPress = {() => {navigation.navigate("LunchMenu")}}></Button>
+    </ScrollView>)
 }

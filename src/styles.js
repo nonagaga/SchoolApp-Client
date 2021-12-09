@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     rickContainer: {
       alignItems: 'center',
       marginBottom: 30,
+      backgroundColor: '#1a1a1a',
     },
     rick:{
       width: 200,
@@ -60,6 +61,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       marginTop: 20,
       marginBottom: 20,
+      backgroundColor: '#1a1a1a',
     },
     calendarEvent:{
       padding: 10,
