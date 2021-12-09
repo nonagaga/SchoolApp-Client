@@ -21,8 +21,9 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     body: {
-      color: '#DDD',
-      fontSize: 20
+      fontSize: 30,
+      padding: 3,
+      color: "#ddd",
     },
     buttons:{
       fontSize: 20,
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
       color: "#DDD",
       fontSize: 30,
       fontWeight: 'bold',
+      paddingBottom: 20,
     },
     scheduleHeaderTitleStyle: {
       color: "#DDD",
@@ -44,6 +46,7 @@ const styles = StyleSheet.create({
     },
     rickContainer: {
       alignItems: 'center',
+      marginBottom: 30,
     },
     rick:{
       width: 200,
@@ -81,6 +84,20 @@ const styles = StyleSheet.create({
       alignItems: 'flex-start',
       backgroundColor: '#1a1a1a',
       padding: 10,
+    },
+    scheduleContainer: {
+      flex: 1,
+      backgroundColor: '#1a1a1a',
+      padding: 20,
+      paddingTop: 50,
+    },
+    classMenuTitle: {
+      color: '#DDD',
+      fontSize: 30,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginTop: 0,
+      marginBottom: 20,
     },
 });
 
