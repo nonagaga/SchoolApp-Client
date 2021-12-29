@@ -15,14 +15,12 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
 
-global.globalDate = Date()
-
 export default function App() {
   console.log("App started!")
   return (
   <NavigationContainer style = {styles.container} theme = {themes.navigationContainerTheme}>
     <Tab.Navigator initialRouteName="Home" screenOptions = {({route}) => ({
-      tabBarIcon: ({focused, color, size}) => {
+      tabBarIcon: ({focused, color}) => {
         let iconName;
         if(route.name === 'Home'){
           iconName = focused ? "md-home" : "md-home-outline"
@@ -31,21 +29,24 @@ export default function App() {
         } else if (route.name === 'Calendar'){
           iconName = focused ? 'ios-calendar' : 'ios-calendar-outline'
         }
-        return <Ionicons name={iconName} size={24} color={"white"}></Ionicons>
+        return <Ionicons name={iconName} size={24} color={"white"}/>
       }
     })}>
 
       <Tab.Screen name="Home" component={HomeNavigator}
-        options={{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle
-      }}></Tab.Screen>
+    options={{
+      headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle
+    }}/>
 
       <Tab.Screen name="Classes" component={ClassMenu}
-        options={{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle
-      }}></Tab.Screen>
+    options={{
+      headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle
+    }}/>
 
       <Tab.Screen name="Calendar" component={CalendarMenu}
-      options={{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle
-      }}></Tab.Screen>
+    options={{
+      headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle
+    }}/>
 
     </Tab.Navigator>
   </NavigationContainer>);
@@ -56,8 +57,16 @@ function HomeNavigator() {
   return(
     <NavigationContainer independent={true} style = {styles.container}>
       <Stack.Navigator screenOptions = {{headerShown: false}} style = {styles.container}>
-        <Stack.Screen name="HomeScreen" component= {HomeScreen} options = {{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle}}></Stack.Screen>
-        <Stack.Screen name="LunchMenu" component={LunchMenu} options = {{headerStyle: styles.headerStyle, headerTitleStyle: styles.headerTitleStyle, tabBarStyle: styles.headerStyle}}></Stack.Screen>
+        <Stack.Screen name="HomeScreen" component= {HomeScreen} options = {{
+  headerStyle: styles.headerStyle,
+  headerTitleStyle: styles.headerTitleStyle,
+  tabBarStyle: styles.headerStyle
+}}/>
+        <Stack.Screen name="LunchMenu" component={LunchMenu} options = {{
+  headerStyle: styles.headerStyle,
+  headerTitleStyle: styles.headerTitleStyle,
+  tabBarStyle: styles.headerStyle
+}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
@@ -67,6 +76,8 @@ function HomeScreen({navigation}) {
   return (
     <ScrollView style={styles.container}>
       <Text style = {styles.title}>Welcome to the CGSH School App!</Text>
-      <Button title = 'Lunch Menu' onPress = {() => {navigation.navigate("LunchMenu")}}></Button>
+      <Button title = 'Lunch Menu' onPress = {() => {
+  navigation.navigate("LunchMenu")
+}}/>
     </ScrollView>)
 }
